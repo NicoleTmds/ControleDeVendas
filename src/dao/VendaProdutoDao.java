@@ -83,14 +83,14 @@ public class VendaProdutoDao {
     public ResultSet retornarProdutoMaisVendidoDia(){
         try {
             return conexao.getConn()
-                    .createStatement().executeQuery("SELECT p.nome, vp.produto_id, SUM(vp.quantidade) as quantidade_total "
-                            + "FROM venda_produto vp "
-                            + "INNER JOIN venda v ON vp.venda_id = v.venda_id "
-                            + "INNER JOIN produto p ON vp.produto_id = p.produto_id "
-                            + "WHERE venda_produto"
-                            + "GROUP BY p.nome, vp.produto_id "
-                            + "ORDER BY quantidade_total DESC "
-                            + "LIMIT 1");
+                    .createStatement().executeQuery("SELECT p.nome, vp.produto_id, SUM(vp.quantidade) as quantidade_total"
+                    +"FROM venda_produto vp"
+                    +"INNER JOIN venda v ON vp.venda_id = v.venda_id"
+                    +"INNER JOIN produto p ON vp.produto_id = p.produto_id"
+                    +"GROUP BY p.nome, vp.produto_id"
+                    +"ORDER BY quantidade_total DESC"
+                    +"LIMIT 1"
+                    );
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
